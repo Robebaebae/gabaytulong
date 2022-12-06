@@ -3,7 +3,7 @@ session_start();
 
 require('../functions/organizationCheck.php');
 include('../sqlqueries/dbConnect.php');
-
+$_SESSION["current_report"] = "";
 $output = '';
 ?>
 

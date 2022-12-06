@@ -111,10 +111,11 @@ if(isset($_POST['submit'])){
             $org_status = mysqli_real_escape_string($conn, "PENDING");
             $org_date = mysqli_real_escape_string($conn, date("Y/m/d"));
         	$org_remarks = "";
+            $org_statusremarks = "";
             
 
             $sql = "INSERT INTO organizations
-            VALUES('$genRef','$org_dp','$org_name','$org_add','$contact','$details','$org_adminName','$email','$password','$id_file','$org_status','$org_remarks','$org_archive','$org_date')";
+            VALUES('$genRef','$org_dp','$org_name','$org_add','$contact','$details','$org_adminName','$email','$password','$id_file','$org_status','$org_remarks','$org_statusremarks','$org_archive','$org_date')";
             
             if(mysqli_query($conn, $sql)){
                 // success

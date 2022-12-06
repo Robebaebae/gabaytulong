@@ -23,6 +23,7 @@ foreach($request_organizations as $request_organization){
 
     if($current_organization == $org_UpdateID)
     {
+      	$currentorg_dp = $request_organization['org_dp'];
         $currentorg_name = $request_organization['org_name'];
         $currentorg_details = $request_organization['org_details'];
         $_SESSION["currentOrgName"] = $currentorg_name;

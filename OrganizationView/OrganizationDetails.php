@@ -84,28 +84,8 @@ include('../functions/fetchOrgDetails.php');
     <div class="dashboard-organization-button-placements">
             <a class="button-tertiary" href="../OrganizationView/OrganizationDetailsEdit.php">Edit</a>
             <a class="button-secondary" href="../OrganizationView/OrganizationDetailsChangePass.php">Change Password</a>
-            <a class="button-quatary open-button"><?php echo $currentorg_status?></a>
+            <a class="button-primary" href="../OrganizationView/OrganizationDetailsActive.php"><?php echo "Status: ".$currentorg_status?></a>
     </div>
-          <dialog class="modal" id="modal">
-                    <p class="dashboard-organization-details-title"> Organization Status</p>
-                    <div class="dashboard-inside-model">
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                    <p>Are you sure you want to set the organization status to </p><br><h2>
-                    "<?php 
-  					if($currentorg_status == "ACTIVE"){
-                    	$change_status = "INACTIVE";
-                    }
- 				    else{
-                    	$change_status = "ACTIVE";
-                    }
- 					echo $change_status?>"</h2>
-                    </div>
-                    <div class="dashboard-organization-button-placements">
-                      
-                      <button class="button-tertiary close-button"  data-mdb-dismiss="modal">Close</button>
-                      <a class="button-quatary" href="../functions/fetchOrgDetailsActive.php">Change Status</a>
-                    </div>
-          </dialog>
 </div>
 </form>
 
@@ -144,17 +124,6 @@ $(this).next().removeAttr("disabled")
    }
   }
 
-  const modal = document.querySelector("#modal");
-const openModal = document.querySelector(".open-button");
-const closeModal = document.querySelector(".close-button");
-
-openModal.addEventListener("click", () => {
-  modal.showModal();
-});
-
-closeModal.addEventListener("click", () => {
-  modal.close();
-});
 </script>
 
 

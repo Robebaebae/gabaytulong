@@ -2,7 +2,6 @@
 session_start();
 include('../sqlqueries/dbConnect.php');
 
-
 $output = '';
 unset($dataDate);
 unset($data);
@@ -58,6 +57,10 @@ else{
 $data[] = $total_recordsAcc;
 $data[] = $total_recordsDec;
 $data[] = $total_recordsPen;
+
+$total_processed = $total_recordsAcc + $total_recordsDec;
+$_SESSION['$total_processed'] = $selected_year;
+
 
 
 //bar chart data
@@ -125,11 +128,14 @@ $dataDate[] = $total_Aug;
 
 $output .= '
 <div class="chart" >
-          <div class="chart-1" style="margin-top:-1%;">
+           <div class="chart-1" style="margin-top:-1%;">
+                  
+                  <a class="Dashboard-button" href="../OrganizationView/OrganizationReport.php?updateId=APPROVED">
                   <div class="row-a">
                         <p class="dash-title">Approve Request</p>
                             <h1 class="">'.$total_recordsAccPercent.'</h1>
                   </div>
+                  </a>
 
                   <div class="donut">
                           <canvas id="donut" ></canvas>
@@ -139,16 +145,24 @@ $output .= '
           </div>
 
           <div class="chart-2" style="margin-top:-1%;">
-                          <div class="row-p-d">
-                                <div class="row-p">
-                                      <p class="dash-title">Pending Request</p>
-                                      <h1 class="">'.$total_recordsPenPercent.'</h1>   
-                                </div>
-
-                                <div class="row-d">
-                                      <p class="dash-title">Declined Request</p>
-                                      <h1 class="">'.$total_recordsDecPercent.'</h1>
-                                </div>
+                          
+                    
+                           <div class="row-p-d">
+                           
+                                    <a class="Dashboard-button" href="../OrganizationView/OrganizationReport.php?updateId=PENDING">
+                                        <div class="row-p">
+                                              <p class="dash-title">Pending Request</p>
+                                              <h1 class="">'.$total_recordsPenPercent.'</h1>  
+                                        </div>
+                                    </a>
+                           
+                         		        <a class="Dashboard-button" href="../OrganizationView/OrganizationReport.php?updateId=DECLINED">
+                                        <div class="row-d">
+                                              <p class="dash-title">Declined Request</p>
+                                              <h1 class="">'.$total_recordsDecPercent.'</h1>
+                                        </div>
+                                    </a> 
+                           
                           </div>
           
 
@@ -156,7 +170,6 @@ $output .= '
                                   <canvas id="bar"></canvas>
                            </div>
           </div>
-
   </div>    
           <a href="../functions/funcOrganizationPrintChart.php">
 		  <button class="button-quatary print" onClick="downloadPDF()" class="btn btn-success">

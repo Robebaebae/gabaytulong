@@ -81,18 +81,16 @@ if(!empty($_GET['file']))
                     ?>
                     <div class="organization-requestor-review-images">
                       <label class="request-preview-title"><?php echo ${'currentreq_title_'.$number_requests}; ?></label>
-                      <embed src="../request_requirements/<?php echo ${'currentreq_req_'.$number_requests}; ?>"  style="margin-left:1rem;" width="90rem" height="115rem" />
-                      <label class="request-preview-result"><?php echo ${'currentreq_req_'.$number_requests}; ?></label>
+                      <embed class="myImages" id="myImg" src="../request_requirements/<?php echo ${'currentreq_req_'.$number_requests}; ?>"  style="margin-left:25%;" width="150rem" height="100rem" />
+                      <label class="request-preview-result" style="text-align:center;"><?php echo ${'currentreq_req_'.$number_requests}; ?></label>
                     
 
 
-                      <div class="download-and-preview">
-                              <a class="button-quatary" href="../functions/orgRequestorDownload.php?file=<?php echo ${'currentreq_req_'.$number_requests}; ?>">
+                      <div class="download-and-preview" >
+                              <a class="button-quatary" style="width:100%;"href="../functions/orgRequestorDownload.php?file=<?php echo ${'currentreq_req_'.$number_requests}; ?>">
                               <object data="../resources/assets/icons/download.svg" width="24" height="24"></object> Download
                               </a>
-                              <a class="button-quatary open-button" target="../OrganizationView/OrganizationRequestReviewFile.php?file=<?php echo ${'currentreq_req_'.$number_requests}; ?>" href="../OrganizationView/OrganizationRequestReviewFile.php?file=<?php echo ${'currentreq_req_'.$number_requests}; ?>">
-                              <object data="../resources/assets/icons/eye.svg" width="24" height="24"></object> Preview
-                              </a>
+                
                       </div>
                                 
                                 
@@ -127,9 +125,9 @@ if(!empty($_GET['file']))
                                         <option value="No Remarks" selected="">No Remarks.</option>
                                 </select>
                     </div>
-              		<div class="fillup-input-group" style="width:102%;margin-left:-1%;">
-                        <input type="text" name="otherVal" id="otherVal" value="">
-                        <label class="fillup-label">Other Remarks</label>
+              		<div class="fillup-input-group" style="width:102%;margin-left:-1%;padding:1%">
+                        <input type="text" name="otherVal" id="otherVal" value="" style="padding:1.5%;border-radius: .5rem;">
+                        <label class="fillup-label" style="margin-top:0%;">Other Remarks</label>
                     </div>
             </div>
             <div id="searchResult" class="a-c"></div>
@@ -143,14 +141,43 @@ if(!empty($_GET['file']))
        <a class="button-secondary" href="../OrganizationView/OrganizationRequest.php" style="width:15rem ;">Back</a>
       </div>
 
-
-
-
-
-
-
 </form>
+  
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+  
+  
 </section>
+  
+<script type="text/javascript">
+  // create references to the modal...
+var modal = document.getElementById('myModal');
+// to all images -- note I'm using a class!
+var images = document.getElementsByClassName('myImages');
+// the image in the modal
+var modalImg = document.getElementById("img01");
+
+
+// Go through all of the images with our custom class
+for (var i = 0; i < images.length; i++) {
+  var img = images[i];
+  // and attach our click listener for this image.
+  img.onclick = function(evt) {
+    console.log(evt);
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
 
   
   
@@ -208,26 +235,6 @@ $('#search_text').keyup(function(){
 
 </script>
 
-<script>
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    menuBtnChange();//calling the function(optional)
-  });
-
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-   if(sidebar.classList.contains("open")){
-     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-   }else {
-     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-   }
-  }
-
-
-</script>
 
 </body>
 </html>

@@ -60,7 +60,6 @@ $data .= '
                                 <tbody>
                                 
                                     <tr id="tableHeader">
-                                        <th></th>
                                         <th>Reference ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -78,11 +77,9 @@ while($row = mysqli_fetch_array($result))
  $data .= '   
    <tr id="tableContent">
 	   
-	   <td style="width:10px; text-align: center;">
-		   <input type="checkbox" name="stud_archive[]" value="'.$_SESSION['stud_archive'] = $row['req_refID'].'">
-	   </td> 
-	   <td id="contentTD">'.$row["req_givenname"].' '.$row["req_middlename"].' '.$row["req_lastname"].'</td>
+
 	   <td id="contentTD">'.$row["req_refID"].'</td>
+       <td id="contentTD">'.$row["req_givenname"].' '.$row["req_middlename"].' '.$row["req_lastname"].'</td>
 	   <td id="contentTD">'.$row["req_email"].'</td>
 	   <td id="contentTD">'.$row["asst_name"].'</td>
 	   <td id="contentTD">'.$row["req_date"].'</td>

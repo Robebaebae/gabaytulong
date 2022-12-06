@@ -89,11 +89,14 @@ include('../functions/fetchOrgAsst.php');
    
 
 <div class="assistance-organization-name-details">
+        <div class="organization-image-cropper">
+        <img class="organization-image-cropper-inside" src="<?php echo '../org_displaypic/'.$currentorg_dp?>" />
+        </div>
+        <div class="organization-name-and-descriptions-">
         <p class="assistance-organization-name"><?php echo $_SESSION["currentOrgName"];?></p>
-
-
         <p class="assistance-organization-details"><?php echo $currentorg_details?></p>
-</div>  
+        </div>
+</div> 
 
 
 
@@ -117,9 +120,9 @@ include('../functions/fetchOrgAsst.php');
                          
                             <p id="asst_name" class="assistance-offered-card-title">'.htmlspecialchars($assistance_offered['asst_name']).'</p>
                             <p class="assistance-offered-card-description">'.htmlspecialchars($assistance_offered['asst_description']).'</p>
-                    
+                    		<p class="assistance-offered-card-content-bottom-title" ><object data="../resources/assets/icons/requirements.svg" width="13" height="13"></object> Requirements:</p>
                             <div class="assistance-offered-card-content-bottom">
-                                <p class="assistance-offered-card-content-bottom-title" ><object data="../resources/assets/icons/requirements.svg" width="13" height="13"></object> Requirements:</p>
+                                
                                 <p class="requestor-view-org-offered-req"> '.htmlspecialchars($assistance_offered['asst_req1']).'</p>
                                 <p class="requestor-view-org-offered-req"> '.htmlspecialchars($assistance_offered['asst_req2']).'</p>
                                 <p class="requestor-view-org-offered-req"> '.htmlspecialchars($assistance_offered['asst_req3']).'</p>

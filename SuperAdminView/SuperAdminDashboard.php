@@ -2,6 +2,8 @@
 session_start();
 include('../functions/superAdminCheck.php');
 include('../sqlqueries/dbConnect.php');
+
+$_SESSION["current_report_admin"] = "";
 ?>
 
 <!DOCTYPE html>

@@ -66,6 +66,18 @@ $request_assistances = mysqli_fetch_all($resultnew, MYSQLI_ASSOC);
                               <input type="text" class="fillup-field"  value="<?php echo  $currentorg_address  ?>">
                               <label class="fillup-label">Address</label><br>
                             </div>
+                
+                			 <div class="fillup-input-group">
+                              <input type="text" class="fillup-field"  value="<?php echo  $currentorg_status?>">
+                              <label class="fillup-label">Status</label><br>
+                            </div>
+                
+                			 <div class="fillup-input-group">
+                              <input type="text" class="fillup-field"  value="<?php echo  $currentorg_stat_remark?>">
+                              <label class="fillup-label">Status Remarks</label><br>
+                            </div>
+                
+                			
               </div>
 
               <div class="dashboard-organization-admin-details">
@@ -135,7 +147,7 @@ $request_assistances = mysqli_fetch_all($resultnew, MYSQLI_ASSOC);
               
               </div>   <div class="dashboard-organization-button-placements">
                 <a class="button-secondary" href="../SuperAdminView/SuperAdminOrganizations.php">Back</a>
-              </div>        
+              </div>     </div>      
 </form>
 </section>
 

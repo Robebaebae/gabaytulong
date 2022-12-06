@@ -86,9 +86,9 @@ include('../functions/genQRCode.php');
         <div class="view-application-contents">
 
 
-        
         <div class="qr-code-contents">
-            <center><h2>Please download this QR Code or copy the Reference ID number.</h2></center>
+         	<center><h2 style="font-size:3rem;">Request sent Successfully!</h2></center>
+            <center><h3 >Please download the QR Code or copy the Reference ID number.</h3></center>
           
           	<h4>QR Code:</h4>
             <img  class="qrcode-image" src="<?php echo ('../qrcodes/'.$qrCode_file)?>">

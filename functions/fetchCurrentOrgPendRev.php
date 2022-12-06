@@ -24,7 +24,7 @@ foreach($current_requestor_details as $current_requestor_detail){
         $currentorg_adminID = $current_requestor_detail['org_adminID'];
         $currentorg_status = $current_requestor_detail['org_status'];
         $currentorg_remarks = $current_requestor_detail['org_remarks'];
-      
+        $currentorg_statusremarks = $current_requestor_detail['org_status_remarks'];
 
     }
 }
