@@ -55,7 +55,7 @@ foreach($organizations as $organization){
                 </div>
                 <p class="organization-title-specific-org">'.$currentName.'</p>
                 <p class="organization-title-specific-org-details">'.$currentDetails.'</p>
-                <a class="button-secondary" href="OrganizationsDetails.php?updateId='.$currentOrg.'">Assistance offered</a>
+                <a class="button-secondary" href="OrganizationsDetails.php?updateId='.$currentOrg.'">Assistance Offered</a>
             </div>
         </a>      
     ';}

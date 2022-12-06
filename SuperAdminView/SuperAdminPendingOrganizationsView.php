@@ -41,8 +41,6 @@ include('../functions/fetchCurrentOrgPendRev.php');
                 <h1 id="newReq" ><?php echo $currentorg_name?></h1><br>          
                   
 
-
-
                 <div class="fillup-input-group">
                       <input required class="fillup-field" value="<?php echo $currentorg_id?>">
                       <label class="fillup-label">Organization ID</label>
@@ -62,6 +60,7 @@ include('../functions/fetchCurrentOrgPendRev.php');
                   <input required class="fillup-field"  value="<?php echo  $currentorg_address  ?>">
                   <label class="fillup-label">Address</label>
                 </div>
+            
 
           </div>
 
@@ -87,17 +86,15 @@ include('../functions/fetchCurrentOrgPendRev.php');
                       <label style="margin-left:1%">Organization Admin ID</label>
 
                       <div class="organization-requestor-review-images" style="margin-left:1%">
-                            <label class="request-preview-title"><?php echo $currentorg_adminID; ?></label>
-                            <embed src="../organization_requirements/<?php echo $currentorg_adminID;?>" style="margin-left:1rem;" width="200rem" height="120rem" >
                             
+                            <embed class="myImages" id="myImg" src="../organization_requirements/<?php echo $currentorg_adminID;?>" style="margin-left:1rem;" width="200rem" height="120rem" >
+                            <label class="request-preview-title"><?php echo $currentorg_adminID; ?></label>
                                     
                             <div class="download-and-preview">
-                                    <a class="button-quatary" href="../functions/adminRequestorDownload.php?file=<?php echo $currentorg_adminID; ?>">
+                                    <a class="button-quatary" style="width:100%;"href="../functions/adminRequestorDownload.php?file=<?php echo $currentorg_adminID; ?>">
                                     <object data="../resources/assets/icons/download.svg" width="24" height="24"></object> Download
                                     </a>
-                                    <a class="button-quatary open-button" target="../SuperAdminView/SuperAdminPendingOrganizationsViewFile.php?file=<?php echo $currentorg_adminID; ?>" href="../SuperAdminView/SuperAdminPendingOrganizationsViewFile.php?file=<?php echo $currentorg_adminID; ?>">
-                                    <object data="../resources/assets/icons/eye.svg" width="24" height="24"></object> Preview
-                                    </a>
+                                    
                             </div>
                       </div>
 
@@ -152,8 +149,40 @@ include('../functions/fetchCurrentOrgPendRev.php');
                 <a class="button-secondary" href="../SuperAdminView/SuperAdminOrganizations.php" style="width:15rem ;">Back</a>
           </div>
 </form>
-</section>
   
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+  
+</section>
+
+<script type="text/javascript">
+  // create references to the modal...
+var modal = document.getElementById('myModal');
+// to all images -- note I'm using a class!
+var images = document.getElementsByClassName('myImages');
+// the image in the modal
+var modalImg = document.getElementById("img01");
+
+
+// Go through all of the images with our custom class
+for (var i = 0; i < images.length; i++) {
+  var img = images[i];
+  // and attach our click listener for this image.
+  img.onclick = function(evt) {
+    console.log(evt);
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
   
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

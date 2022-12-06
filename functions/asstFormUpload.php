@@ -1,5 +1,4 @@
 <?php
-
 $_SESSION["reqCounter"] = 1;
 $_SESSION["reqCounterInput"] = 1;
 $reqCounter = $_SESSION["reqCounter"];
@@ -47,7 +46,9 @@ $errors = array('check' => '','asst_name' => '','g_name' => '', 'm_name' => '', 
  , 'req_6' => '', 'req_7' => '', 'req_8' => '', 'req_9' => '', 'req_10' => '');
 
 if(isset($_POST['submit'])){
-
+ 	
+ 
+  
     //given name
     if(empty($_POST['g_name'])){
         $errors['g_name'] = 'A given name is required';
@@ -163,9 +164,12 @@ if(isset($_POST['submit'])){
                 
     if(array_filter($errors)){
         //echo 'errors in form';
+   
+      
         
     }else {
-
+      
+      
         //generate reference id
 
         $genRef = strtoupper(uniqid(TRUE));
@@ -242,7 +246,7 @@ if(isset($_POST['submit'])){
         // save to db and check
         if(mysqli_query($conn, $sql)){
             // success
-            header('Location: ../phpmailer-main/sendEmailNew.php');
+            header('Location: ../RequestorView/OrganizationLoading.php');
         } else {
             echo 'query error: '. mysqli_error($conn);
         }
@@ -252,3 +256,5 @@ if(isset($_POST['submit'])){
 }
 
 ?>
+
+

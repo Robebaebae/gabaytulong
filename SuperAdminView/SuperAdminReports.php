@@ -4,6 +4,8 @@ session_start();
 include('../functions/superAdminCheck.php');
 include('../sqlqueries/dbConnect.php');
 
+$current_report_admin = $_GET["updateId"]; 
+$_SESSION["current_report_admin"] = $current_report_admin;
 
 $num_per_page = 5;
 $_SESSION['numpage'] = $num_per_page;

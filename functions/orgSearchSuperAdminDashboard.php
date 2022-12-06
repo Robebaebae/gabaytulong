@@ -108,10 +108,13 @@ $dataDate[] = $total_Aug;
 $output .= '
 <div class="chart">
           <div class="chart-1">
+          
+                  <a href="../SuperAdminView/SuperAdminReports.php?updateId=ACTIVE">
                   <div class="row-a">
-                        <p class="dash-title">Approve Request</p>
+                         <p class="dash-title">Active Organizations</p>
                             <h1 class="">'.$total_recordsAccPercent.'</h1>
                   </div>
+                  </a>
 
                   <div class="donut">
                           <canvas id="donut" ></canvas>
@@ -121,16 +124,21 @@ $output .= '
           </div>
 
           <div class="chart-2">
-                          <div class="row-p-d">
+                        <div class="row-p-d">
+                                
+                                <a href="../SuperAdminView/SuperAdminReports.php?updateId=PENDING">
                                 <div class="row-p">
-                                      <p class="dash-title">Pending Request</p>
+                                      <p class="dash-title">Pending Organizations</p>
                                       <h1 class="">'.$total_recordsPenPercent.'</h1>   
                                 </div>
-
+                                </a>
+                                
+                                <a href="../SuperAdminView/SuperAdminReports.php?updateId=INACTIVE">
                                 <div class="row-d">
-                                      <p class="dash-title">Pending Organizations</p>
+                                      <p class="dash-title">Inactive Organizations</p>
                                       <h1 class="">'.$total_recordsDecPercent.'</h1>
                                 </div>
+                                </a>
                           </div>
           
 
@@ -146,9 +154,9 @@ $output .= '
   //doughnut
         data = {
         labels: [
-          "Accepted",
-          "Declined",
+          "Active",
           "Pending",
+          "Inactive",
         ],
         datasets: [{
           label: "Number of Requests",

@@ -65,9 +65,19 @@ else if(isset($_POST["end_date"])){
 
 else
 {
- $query = "
- SELECT * FROM organizations 
- ";
+  if($_SESSION["current_report_admin"] != ""){
+  
+   $query = "
+   SELECT * FROM organizations WHERE org_status = '". $_SESSION['current_report_admin']."'
+   ";
+  }
+  else{
+    $query = "
+   SELECT * FROM organizations 
+   ";
+  }
+  
+ 
 }
 
 

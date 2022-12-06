@@ -6,6 +6,9 @@ include('../sqlqueries/dbConnect.php');
 include('../functions/fetchOrgDetailsReports.php');
 include('../functions/fetchOrgAsstReports.php');
 
+$current_report = $_GET["updateId"]; 
+$_SESSION["current_report"] = $current_report;
+
 $num_per_page = 5;
 $_SESSION['numpageRep'] = $num_per_page;
 $_SESSION['currentPage_3'] = 1;
@@ -70,6 +73,10 @@ $_SESSION['start_from_Rep'] = $start_from;
                                     }
 
                                     ?>
+                                	<option value="APPROVED" selected="">APPROVED</option>
+                                    <option value="DECLINED" selected="">DECLINED</option>
+                                    <option value="PENDING" selected="">PENDING</option>
+                                
                                     <option value="All" selected="">All</option>
                               </select>
                           </div>

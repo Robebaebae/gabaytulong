@@ -3,6 +3,12 @@ session_start();
 include('../sqlqueries/dbConnect.php');
 $org_UpdateID = $_SESSION["organization"];
 
+
+
+if(isset($_POST['accept'])){
+  
+$statusremarks = $_POST['otherVal'];
+
 $sql = 'SELECT * FROM organizations'; 
 
 $result = mysqli_query($conn, $sql);
@@ -19,7 +25,6 @@ foreach($request_organizations as $request_organization){
         $currentorg_status = $request_organization['org_status'];
     }
 }
-    
             if($currentorg_status=="ACTIVE")
             {
                 $currentorg_status = "INACTIVE";
@@ -29,7 +34,7 @@ foreach($request_organizations as $request_organization){
                 $currentorg_status = "ACTIVE";
             }
 
-            $query = "UPDATE organizations SET org_status='$currentorg_status'
+            $query = "UPDATE organizations SET org_status='$currentorg_status', org_status_remarks='$statusremarks'
             WHERE org_id='$org_UpdateID'"; 
            
             if(mysqli_query($conn, $query)){
@@ -39,6 +44,12 @@ foreach($request_organizations as $request_organization){
             } else {
                 echo 'query error: '. mysqli_error($conn);
             }
+  
+
+
+}
+
+
 
        
 

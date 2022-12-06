@@ -71,9 +71,19 @@ else if(isset($_POST["end_date"])){
 
 else
 {
- $query = "
- SELECT * FROM requests INNER JOIN assistance_offered ON requests.asst_id = assistance_offered.asst_id WHERE requests.org_id = '".$_SESSION["currentOrg"]."' ORDER BY req_date
- ";
+  
+  if($_SESSION["current_report"]!=""){
+  
+   $query = "
+        SELECT * FROM requests INNER JOIN assistance_offered ON requests.asst_id = assistance_offered.asst_id WHERE 
+        requests.org_id = '".$_SESSION["currentOrg"]."' AND req_status = '".$_SESSION["current_report"]."' ORDER BY req_date
+        ";
+  }
+  else{
+     $query = "
+     SELECT * FROM requests INNER JOIN assistance_offered ON requests.asst_id = assistance_offered.asst_id WHERE requests.org_id = '".$_SESSION["currentOrg"]."' ORDER BY req_date
+     ";
+  }
 }
 $current_date = date("Y/m/d");
 $_SESSION['currentdate'] = $current_date;

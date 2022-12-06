@@ -24,6 +24,7 @@ foreach($currents as $current){
         $currentorg_admin = $current['org_admin'];
         $currentorg_adminEmail = $current['org_adminEmail'];
         $currentorg_status = $current['org_status'];
+        $currentorg_stat_remark = $current['org_status_remarks'];
     }
    
   

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+include('functions/mainGetData.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +18,10 @@
 
   <link href="main.css?v=<?php echo time(); ?>" rel="stylesheet">
   <link rel="shortcut icon" href="resources/assets/images/logo.svg" type="image/svg+xml">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.0/countUp.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
   </head>
 
 <body>
@@ -42,7 +53,7 @@
                   </div>
               </a>
                   <button class="nav-close-btn" value="close" data-nav-toggler>
-                  <img src="./resources/assets/icons/close.svg" alt="close" width="24"></img>
+                  <img src="./resources/assets/icons/close.svg" alt="close" width="24">
                   </button>
             </div>
 
@@ -58,6 +69,10 @@
 
                                                     <li class="navbar-item">
                                                       <a href="#features" class="navbar-link" data-nav-link>Features</a>
+                                                    </li>
+
+                                                    <li class="navbar-item">
+                                                      <a href="#total" class="navbar-link" data-nav-link>Tally</a>
                                                     </li>
                                         
                                         <div class="sidenav">
@@ -110,16 +125,17 @@
 
           <div class="qrcode-animation-left">
               <figure class="hero-banner">
-                      <img src="resources/assets/images/new-hero-banner.png" alt="malolos" class="w-100">
+                      <img src="resources/assets/images/new-hero-banner.png" alt="malolos" class="w-100"></img>
               </figure>
           </div>
    
-          <dialog class="modal" id="modal">
-                   <button class="button-tertiary close-button" style="right:0 ;"  data-mdb-dismiss="modal">Close</button>
-                    <video  width="1000" height="100%" controls>
-                      <source src="resources/assets/video/System_Full_Demo.mp4" alt="gabaytulong" type="video/mp4">
+          <dialog class="modal_vid" id="modal_vid">
+                      <button class="button-tertiary close-button" style="right:0 ;"  data-mdb-dismiss="modal_vid">Close</button>
+                      <video  width="1000" height="100%" controls style="margin-top:2%">
+                      <source src="resources/assets/video/My Video.webm" alt="gabaytulong">
                       <source url="https://youtu.be/40dz5qwkRY8" alt="gabaytulong" type="video/mp4">
                       <source src="https://youtu.be/40dz5qwkRY8" alt="gabaytulong" type="video/mp4">
+                      </video>
                     
           </dialog>
 
@@ -220,9 +236,9 @@
                                   <img src="resources/assets/images/realtime.svg" alt="" width="200" height="200">
                           </div>
                         <div class="features-card-details">
-                          <h2>Responsive</h2>
+                          <h2>Accessible</h2>
                           <p class="p">
-                          Gabay Tulong Para sa Lahat ng Maloleno will cater towards any device a requestor has.
+                          Gabay Tulong Para sa Lahat ng Maloleno could be accessed through different devices for the convenience of its users.
                           </p>
                         </div>
               </div>
@@ -232,22 +248,22 @@
                                   <img src="resources/assets/images/qrcodee.svg" alt="" width="200" height="200">
                         </div>
                         <div class="features-card-details">
-                              <h2>QR-code</h2>
+                              <h2>Convenient</h2>
                               <p class="p">
-                              These are generated with a matching reference ID number after your request application, this can be downloaded to check the status of your application.
+                              Users could check the status of their request in real time using the generated QR code and Reference ID provided.    
                               </p>
                         </div>
             </div>
 
 
             <div class="features-card">
-                    <div class="features-card-icon">
+                    <div class="features-card-icon" style="margin-top:8%;margin-left:5%">
                       <img src="resources/assets/images/dashboarrd.svg" alt="" width="220" height="200">
                     </div>
                     <div class="features-card-details">
-                              <h2>Dashboard</h2>
+                              <h2>Quick</h2>
                               <p class="p">
-                              This feature is geared towards the Organization Admin to process requests and check the data of their organization.
+                              Users can enjoy the quick process of availing the assistance offered by the different organizations around Malolos .
                               </p>
                     </div>
             </div>
@@ -255,32 +271,82 @@
 
         </div>
 
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
       </section>
       <!-- Features End -->
 
+
+<!-- Total Approved Area --> 
+    <section id="total"  class="view-application-container services" style= "background-color: var(--section-color-services); margin: 0rem;">
+     
+     <div class="view-application-contents serviceSec">
+     <p class="name-section">Live Tally</p>
+       
+       <div class="featured-title">
+          <h2 style="color:hsl(218, 72%, 18%);">A live tally for Gabay Tulong Para sa Lahat ng Maloleno.</h2>
+          <p style="font-size:2rem; color:hsl(218, 72%, 18%);">Here are the tallies for Beneficiaries, Received Request,</p>
+         <p style="font-size:2rem; color:hsl(218, 72%, 18%);">Active Organizations, and Available Assistance.</p>
+          <p style="font-size:2rem; color:hsl(218, 72%, 18%);">As of <?php echo $today = date("F j, Y");  ?></p>
+        </div> 
+       
+           <div class="qrcode-animation-left">
+               <figure class="hero-banner" style="margin-top:-15%">
+                 <img src="resources/assets/images/trial_tally_0.png" width="805" height="805" alt="services" class="w-100">
+               </figure>
+           </div>
+
+
+           <div class="view-application-details-right" style="margin-top:0%">
+           <div class="service-list">
+                      <div class="service-list-item" style="margin-top:-8%">
+                        <img src="resources/assets/icons/bene_logo.png" alt="application-form" class="image-services-icons" style="--color:351, 85%, 82%;margin-top:-16%">
+                            <div class="titleofservies" style="text-align:left;">
+                              		<h1 class="h1 home-text" style="font-size:4rem;">Beneficiaries </h1>
+                                 <h1 class="h1 home-text num" style="font-size:6rem;margin-top:1%;margin-bottom:8%"><?php echo $_SESSION['$total_records_ben']?></h1>
+                             </div>
+                        </div>
+           </div>
+             
+            <div class="service-list">
+                      <div class="service-list-item" style="margin-top:-8%">
+                        <img src="resources/assets/icons/processed_logo.png" alt="application-form" class="image-services-icons" style="--color: 33, 80%, 76%;margin-top:-18%">
+                            <div class="titleofservies" style="text-align:left;">
+                              		<h1 class="h1 home-text" style="font-size:4rem;">Received Request </h1>
+                                 <h1 class="h1 home-text num" style="font-size:6rem;margin-top:1%;margin-bottom:8%" ><?php echo $_SESSION['$total_processed']?></h1>
+                             </div>
+                        </div>
+           </div>
+             
+             <div class="service-list">
+                      <div class="service-list-item" style="margin-top:-8%">
+                        <img src="resources/assets/icons/ast_off_logo.png" alt="application-form" class="image-services-icons" style="--color:241, 63%, 91%;margin-top:-18%">
+                            <div class="titleofservies" style="text-align:left;">
+                              		<h1 class="h1 home-text" style="font-size:4rem;" >Active Organizations </h1>
+                                 <h1 class="h1 home-text num" style="font-size:6rem;margin-top:1%;margin-bottom:8%"><?php echo $_SESSION['$total_records_active']?></h1>
+                             </div>
+                      </div>
+             </div> 
+             
+            <div class="service-list" style="margin-top:-8%">
+                      <div class="service-list-item">
+                        <img src="resources/assets/icons/helped_logo.png" alt="application-form" class="image-services-icons" style="--color:90, 100%, 85%;margin-top:-18%">
+                            <div class="titleofservies" style="text-align:left;">
+                              		<h1 class="h1 home-text" style="font-size:4rem;" >Assistance Offered </h1>
+                                 <h1 class="h1 home-text num" style="font-size:6rem;margin-top:1%;margin-bottom:8%"><?php echo $_SESSION['$total_records_org']?></h1>
+                             </div>
+                      </div>
+             </div>
+             
+            
+           
+       
+                     
+         
+
+
+   </div>
+   </section>
+<!-- Total Approved Area End --> 
 
 
 
@@ -306,14 +372,14 @@
                 Gabay Tulong Para sa Lahat ng Maloleno is a website that will enable an organization to provide assistance, donate to those in need, and volunteer to help. Residents of Malolos can file a request for any kind of support they need.
               </p>
             </div>
-            <div class="footer-social">
-              <a class="footer-link" href="#">
+            <div class="footer-social" style="margin-left:15%;">
+              <a class="footer-link" href="https://www.facebook.com/">
                 <img src="resources/assets/icons/logo-facebook.svg" alt="facebook" width="30">
               </a>
-              <a class="footer-link" href="#">
+              <a class="footer-link" href="https://www.twitter.com/">
                 <img src="resources/assets/icons/logo-twitter.svg" alt="twitter" width="30">
               </a>
-              <a class="footer-link" href="#">
+              <a class="footer-link" href="https://www.instagram.com/">
                 <img src="resources/assets/icons/logo-instagram.svg" alt="instagram" width="30">
               </a>
             </div>
@@ -321,20 +387,21 @@
           
         
           <div class="footer-right-item">
-            <h3>Quick Links</h3>
+            <h3>Main Page</h3>
             <ul>
-              <li><a class="footer-link" href="#">Home</a></li>
-              <li><a class="footer-link"  href="#">Services</a></li>
-              <li><a class="footer-link" href="#">Features</a></li>
+              <li><a class="footer-link" href="#home" class="navbar-link">Home</a></li>
+              <li><a class="footer-link" href="#services" class="navbar-link">Services</a></li>
+              <li><a class="footer-link" href="#features" class="navbar-link">Features</a></li>
+              <li><a class="footer-link" href="#total" class="navbar-link">Live Tally</a></li>
             
             </ul>
           </div>
           <div class="footer-right-item">
             <h3>Quick Links</h3>
             <ul>
-              <li><a class="footer-link" href="#">Login</a></li>
-              <li><a class="footer-link" href="#">View Application Status</a></li>
-              <li><a class="footer-link" href="#">Organizations</a></li>
+              <li><a class="footer-link" href="../OrganizationView/OrganizationLogin.php">Login</a></li>
+              <li><a class="footer-link" href="../RequestorView/ViewApplication.php">View Application Status</a></li>
+              <li><a class="footer-link" href="../OrganizationView/OrganizationLogin.php">Organizations</a></li>
             </ul>
           </div>
           <div class="footer-right-item">
@@ -356,20 +423,25 @@
         </div>
         
         </div>
-    
-   
-    
-    
-   
+
   </footer>
 
   <a href="#top" class="back-top-btn has-after active"  data-back-top-btn>
     <img src="resources/assets/icons/arrow-up.svg" alt="arrow-up" width="24">
   </a>
 
-    <script src="script.js" defer></script>
-    <script>
-        const modal = document.querySelector("#modal");
+<div id="divId" class="loader-wrapper" style="display:block">
+<span class="loader" style="margin-left:49%">
+  <span class="loader-inner"></span>
+</span>
+   
+</div>
+
+    
+<script src="script.js" defer></script>
+  
+<script>
+const modal = document.querySelector("#modal_vid");
 const openModal = document.querySelector(".open-button");
 const closeModal = document.querySelector(".close-button");
 
@@ -380,6 +452,18 @@ openModal.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
   modal.close();
 });
-    </script>
+</script>
+    
+<script type="text/javascript">
+$(window).on("load",function(){
+     $(".loader-wrapper").fadeOut("slow");
+});
+</script>
+  
+<script type="text/javascript">
+   $(".num").counterUp({delay:10,time:1000});
+</script>
+        
+    
 </body>
 </html>
