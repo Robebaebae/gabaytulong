@@ -1566,9 +1566,7 @@ transition: var(--transition-2);
 /*-----------------------------------*\
   #Organizations card View Specific Organization
 \*-----------------------------------*/
-.organizations-content .search-container{
- 
-}
+
 
 .organization-card-display{
   display: flex;
@@ -2167,7 +2165,7 @@ margin: 1rem  ;
 
 .modal_vid {
   margin: auto;
-  width:
+
   align-items: center;
   padding: 0rem 1rem 0rem 1rem;
   z-index: 1;

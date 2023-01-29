@@ -1,8 +1,6 @@
 <?php
-session_start();
 
-
-$conn = mysqli_connect('127.0.0.1','root','MAdIz6hOG0iDPvWs','gabaytulong');
+$conn = mysqli_connect('localhost','root','','gabaytulong');
 $querytotal= "SELECT * FROM requests INNER JOIN assistance_offered ON requests.asst_id = assistance_offered.asst_id";
 $total=mysqli_query($conn,$querytotal);
 $total_records=mysqli_num_rows($total);   

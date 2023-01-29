@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+    # To use the container, you need to run a container with the name Gabaytulong
+    # and expose the port 41063 and 41064
+    xampp:
+      container_name: Gabaytulong
+      ports:
+        - '41063:22'
+        - '41064:80'
+      # Mount the local directory ~/Gabaytulong to the /www directory of the container
+      volumes:
+        - '~/gabaytulong:/www'
+      # Use the image tomsik68/xampp:8
+      image: 'tomsik68/xampp:8'
+      # Automatically restart the container when it is stopped, restarted, or when docker is restarted
+      restart: always
+      environment:
+        - XAMPP_START_APACHE=1
+        - XAMPP_START_MYSQL=1
+        - XAMPP_START_PHP=1
+        - XAMPP_START_PROFTPD=0
+      networks:
+        - app-network
+
+networks:
+    app-network:
+      driver: bridge
