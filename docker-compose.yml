@@ -1,27 +1,55 @@
 version: '3.8'
 services:
-    # To use the container, you need to run a container with the name Gabaytulong
-    # and expose the port 41063 and 41064
-    xampp:
-      container_name: Gabaytulong
-      ports:
-        - '41063:22'
-        - '41064:80'
-      # Mount the local directory ~/Gabaytulong to the /www directory of the container
-      volumes:
-        - '~/gabaytulong:/www'
-      # Use the image tomsik68/xampp:8
-      image: 'tomsik68/xampp:8'
-      # Automatically restart the container when it is stopped, restarted, or when docker is restarted
-      restart: always
-      environment:
-        - XAMPP_START_APACHE=1
-        - XAMPP_START_MYSQL=1
-        - XAMPP_START_PHP=1
-        - XAMPP_START_PROFTPD=0
-      networks:
-        - app-network
+
+  php:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.php
+    container_name: my-php-app
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - db
+
+
+  nginx:
+    image: nginx:latest
+    container_name: my-nginx-server
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app:/var/www/html
+    ports:
+      - 80:80
+    depends_on:
+      - php
+
+
+  db:
+    image: mysql:latest
+    container_name: my-mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: gabaytulong
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 8083:80
+
+
+volumes:
+  db-data:
 
 networks:
-    app-network:
-      driver: bridge
+  my-network:
